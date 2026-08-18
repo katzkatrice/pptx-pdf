@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -25,11 +25,14 @@ jobs:
           coverage: none
           tools: composer
 
+      - name: Resolve Composer dependencies
+        run: composer update --no-interaction --prefer-dist --no-progress --with-all-dependencies
+
       - name: Validate Composer configuration
         run: composer validate --strict
 
-      - name: Resolve and install PHP dependencies
-        run: composer update --no-interaction --prefer-dist --no-progress --with-all-dependencies
+      - name: Verify installed dependencies
+        run: composer check-platform-reqs
 
       - name: Commit generated composer.lock
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -67,15 +70,16 @@ jobs:
           test -n "$VERCEL_PROJECT_ID" || (echo "VERCEL_PROJECT_ID is missing" && exit 1)
 
       - name: Checkout latest main
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: main
           fetch-depth: 0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 22
+          cache: npm
 
       - name: Pull Vercel project settings
         run: npx vercel pull --yes --environment=production --token="$VERCEL_TOKEN"
