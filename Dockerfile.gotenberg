@@ -1,0 +1,3 @@
+# Cloud Run-optimized Gotenberg image with LibreOffice/PPTX support.
+# Gotenberg provides this variant specifically for Cloud Run.
+FROM gotenberg/gotenberg:8-cloudrun-libreoffice
