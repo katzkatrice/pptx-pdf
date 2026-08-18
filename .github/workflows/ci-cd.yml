@@ -79,7 +79,6 @@ jobs:
         uses: actions/setup-node@v5
         with:
           node-version: 22
-          cache: npm
 
       - name: Pull Vercel project settings
         run: npx vercel pull --yes --environment=production --token="$VERCEL_TOKEN"
