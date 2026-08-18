@@ -1,8 +1,10 @@
 {
-  "name": "katzkatrice/testphp",
-  "description": "Portable PHP application for Vercel and self-hosting",
+  "name": "katzkatrice/pptx-pdf",
+  "description": "PPTX to PDF converter powered by Gotenberg, PHP and Vercel",
   "type": "project",
   "require": {
-    "php": ">=8.1"
+    "php": ">=8.1",
+    "gotenberg/gotenberg-php": "^2.24",
+    "php-http/guzzle7-adapter": "^1.1"
   }
 }
