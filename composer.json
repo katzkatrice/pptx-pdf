@@ -1,0 +1,8 @@
+{
+  "name": "katzkatrice/testphp",
+  "description": "Portable PHP application for Vercel and self-hosting",
+  "type": "project",
+  "require": {
+    "php": ">=8.1"
+  }
+}
