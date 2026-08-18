@@ -1,1 +1,3 @@
-ind
+<?php>
+ echo "hello";
+</?php>
